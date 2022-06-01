@@ -16,8 +16,12 @@ namespace CollaborativeWhiteboard.Models
             _options = options;
         }
 
+        public DbSet<UserWhiteBoard> UserWhiteBoard { get; set; }
+        public DbSet<Whiteboard> Whiteboard { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<UserWhiteBoard>().HasKey(x => new { x.UserId, x.WhiteboardId });
             base.OnModelCreating(builder);
         }
     }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "W0lbGJVuZdBAEM1eLfBD1XNo4mbAxj5uGOxTKhBx7K8HfzeeO6Lw55hLjTcjgdBWHPIqVoFkEAwmvZ5fOzXhiQ==",
+  "dgSpecHash": "IFbD0kHaNqUvxZMY9iZh368yvkKGtcGzcp6BzYhWct5dPCN8VYtfup7jIlEluEjQOiU2uL5BKsMJGirWSeUO/g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Dan_B\\Documents\\Licenta\\Collaborative-Whiteboard\\CollaborativeWhiteboard\\CollaborativeWhiteboard.csproj",
   "expectedPackageFiles": [
@@ -42,6 +42,7 @@
     "C:\\Users\\Dan_B\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Dan_B\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
+    "C:\\Users\\Dan_B\\.nuget\\packages\\runtime.mapper\\0.0.4-alpha\\runtime.mapper.0.0.4-alpha.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Dan_B\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "C:\\Users\\Dan_B\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",

@@ -548,6 +548,15 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
+      "Runtime.Mapper/0.0.4-alpha": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Runtime.Mapper.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Runtime.Mapper.dll": {}
+        }
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2539,6 +2548,18 @@
         "newtonsoft.json.10.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
+      ]
+    },
+    "Runtime.Mapper/0.0.4-alpha": {
+      "sha512": "joZY6ZQHS1ZpSNxwp/ODP7saeuOu0trNTQBUD9gUPtJluEv+15IfKgoCK9tzQLN6x45j7GnqUr6RZxMWHShL4g==",
+      "type": "package",
+      "path": "runtime.mapper/0.0.4-alpha",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Runtime.Mapper.dll",
+        "runtime.mapper.0.0.4-alpha.nupkg.sha512",
+        "runtime.mapper.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -6082,6 +6103,7 @@
       "Microsoft.EntityFrameworkCore >= 5.0.17",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.17",
+      "Runtime.Mapper >= 0.0.4-alpha",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -6145,6 +6167,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[5.0.17, )"
+          },
+          "Runtime.Mapper": {
+            "target": "Package",
+            "version": "[0.0.4-alpha, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

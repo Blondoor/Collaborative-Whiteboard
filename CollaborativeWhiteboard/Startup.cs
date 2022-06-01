@@ -1,3 +1,4 @@
+using CollaborativeWhiteboard.HubConfig;
 using CollaborativeWhiteboard.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,10 +34,15 @@ namespace CollaborativeWhiteboard
             services.AddDbContext<AppDBContext>(c => c.UseSqlServer(connectionString));
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDBContext>();
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+            services.AddSignalR();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder => builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowCredentials())
+            });
+            /*services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CollaborativeWhiteboard", Version = "v1" });
-            });
+            });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,9 +51,13 @@ namespace CollaborativeWhiteboard
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CollaborativeWhiteboard v1"));
+                /*app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CollaborativeWhiteboard v1"));*/
             }
+
+            app.UseCors("CorsPolicy");
+
+            app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
 
@@ -57,9 +67,12 @@ namespace CollaborativeWhiteboard
 
             app.UseWebSockets();
 
+            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<CanvasHub>("/canvas");
             });
         }
     }

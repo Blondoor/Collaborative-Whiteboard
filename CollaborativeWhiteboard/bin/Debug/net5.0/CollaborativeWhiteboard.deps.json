@@ -37,6 +37,7 @@
           "Microsoft.EntityFrameworkCore": "5.0.17",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.17",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.17",
+          "Runtime.Mapper": "0.0.4-alpha",
           "Swashbuckle.AspNetCore": "5.6.3",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
@@ -770,6 +771,17 @@
         },
         "compile": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Runtime.Mapper/0.0.4-alpha": {
+        "runtime": {
+          "lib/netstandard2.0/Runtime.Mapper.dll": {
+            "assemblyVersion": "0.0.4.0",
+            "fileVersion": "0.0.4.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Runtime.Mapper.dll": {}
         }
       },
       "runtime.native.System/4.3.0": {
@@ -3385,6 +3397,13 @@
       "sha512": "sha512-ebWzW9j2nwxQeBo59As2TYn7nYr9BHicqqCwHOD1Vdo+50HBtLPuqdiCYJcLdTRknpYis/DSEOQz5KmZxwrIAg==",
       "path": "newtonsoft.json/10.0.1",
       "hashPath": "newtonsoft.json.10.0.1.nupkg.sha512"
+    },
+    "Runtime.Mapper/0.0.4-alpha": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-joZY6ZQHS1ZpSNxwp/ODP7saeuOu0trNTQBUD9gUPtJluEv+15IfKgoCK9tzQLN6x45j7GnqUr6RZxMWHShL4g==",
+      "path": "runtime.mapper/0.0.4-alpha",
+      "hashPath": "runtime.mapper.0.0.4-alpha.nupkg.sha512"
     },
     "runtime.native.System/4.3.0": {
       "type": "package",
