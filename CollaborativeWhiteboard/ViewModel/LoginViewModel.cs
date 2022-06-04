@@ -14,8 +14,12 @@ namespace CollaborativeWhiteboard.ViewModel
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+    }
 
-        [Display(Name = "Remember Me")]
-        public bool RememberMe { get; set; }
+    public class LoginResponse
+    {
+        public bool IsSuccessful { get; set; }
+        public string? ErrorMessage { get; set; }
+        public string? Token { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,12 +15,12 @@ namespace CollaborativeWhiteboard.Controllers
     public class AccountController: ControllerBase
     {
         private readonly UserManager<IdentityUser> userManager;
-        private readonly SignInManager<IdentityUser> signInManager;
+        private readonly JwtFeatures.JwtHandler jwtHandler;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, JwtFeatures.JwtHandler jwtHandler)
         {
             this.userManager = userManager;
-            this.signInManager = signInManager;
+            this.jwtHandler = jwtHandler;
         }
 
         [HttpPost]
@@ -61,30 +62,29 @@ namespace CollaborativeWhiteboard.Controllers
             }
 
             var userExists = await userManager.FindByEmailAsync(model.Email);
-            if (userExists != null)
+            if (userExists == null || !await userManager.CheckPasswordAsync(userExists, model.Password))
             {
-                return ValidationProblem(modelStateDictionary: ModelState, statusCode: 400);
+                return Unauthorized(new LoginResponse { IsSuccessful = false, ErrorMessage = "Invalid Authentication" });
             }
 
-            var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
-            if(!result.Succeeded)
-            {
-                return ValidationProblem(modelStateDictionary: ModelState, statusCode: 400);
-            }
+            var signingCredentials = jwtHandler.GetSigningCredentials();
+            var claims = jwtHandler.GetClaims(userExists);
+            var tokenOptions = jwtHandler.GenerateTokenOptions(signingCredentials, claims);
+            var token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
 
-            return Ok(new LoginResult
+            return Ok(new LoginResponse
             {
-                Id = userExists.Id,
-                Email = userExists.Email,
+                IsSuccessful = true,
+                Token = token,
             });
         }
 
-        [HttpPost]
+        /*[HttpPost]
         [Route("logout")]
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
             return Ok();
-        }
+        }*/
     }
 }

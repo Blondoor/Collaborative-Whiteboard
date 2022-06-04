@@ -22,10 +22,12 @@ namespace CollaborativeWhiteboard.Controllers
             _hub = hub;
         }
 
-        public IActionResult Get(Guid id)
+        [HttpGet]
+        [Route("get/{CanvasId: Guid}")]
+        public ActionResult<Models.Whiteboard> Get(Guid CanvasId)
         {
-            var timerManager = new TimerManager(() => _hub.Clients.All.SendAsync("tansferCanvas", whiteboardResource.GetWhiteboard(id)));
-            return Ok(new { Message = "Request completed" });
+            var result = whiteboardResource.GetWhiteboard(CanvasId);
+            return Ok(result);
         }
 
         [HttpGet]
